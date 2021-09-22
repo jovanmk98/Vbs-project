@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @Builder
@@ -17,6 +20,7 @@ public class Movie {
     String genre;
     String name;
     String description;
-    
+    String image;
+    List<String> movieActors = new ArrayList<>();
 
 }

@@ -75,19 +75,25 @@
         </div>
     </div>
 </nav>
+<a href="/actors">Back</a>
 
-<div id="content">
-    <div>
+<div id="container">
 
-        <table >
+    <div id="content">
+        <table>
             <tr>
-                <th><a href="/movies" class="btn btn-sm btn-dark">
-                    <div style="font-size: 25px">Movies</div>
-                </a></th>
-                <th><a href="/actors" class="btn btn-sm btn-dark">
-                    <div style="font-size: 25px">Actors</div>
-                </a></th>
+                <th>Actor name</th>
+                <th>Birth Date</th>
+                <th>Movies</th>
+                <th>Image</th>
 
+            </tr>
+
+            <tr>
+                <td th:text="${actor.getName()}"></td>
+                <td th:text="${actor.getBirthDate()}"></td>
+                <td th:text="${actor.getActorsMovies()}" ></td>
+                <td><img th:src="${actor.getImage()}" width="280px" height="280px"/> </td>
             </tr>
 
 

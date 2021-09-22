@@ -46,7 +46,7 @@
         }
 
     </style>
-    <title>Автосалон</title>
+    <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -75,12 +75,29 @@
         </div>
     </div>
 </nav>
-<a href="movies.html">Back</a>
-<div id="content">
-    <div>
-        <tr>
-            <td th:text="${movie.getName()}"></td>
-        </tr>
+<a href="/movies">Back</a>
+
+<div id="container">
+
+    <div id="content">
+        <table>
+            <tr>
+                <th>Movie name</th>
+                <th>Director</th>
+                <th>Genre</th>
+                <th>Actors</th>
+                <th>Image</th>
+            </tr>
+            <tr>
+                <td th:text="${movie.getName()}"></td>
+                <td th:text="${movie.getDirectorName()}"></td>
+                <td th:text="${movie.getGenre()}"></td>
+                <td th:text="${movie.getMovieActors()}"></td>
+                <td><img th:src="${movie.getImage()}" width="280px" height="280px"/> </td>
+            </tr>
+
+        </table>
+
     </div>
 
 </div>

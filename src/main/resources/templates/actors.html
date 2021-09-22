@@ -2,7 +2,6 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
     <style type="text/css">
         html, body {
             margin-left: 15px;
@@ -38,15 +37,52 @@
             background: #BBBBBB
         }
 
+        #wrapper {
+            width: 100%;
+            margin-top: 0px;
+        }
 
-        #header span {
+        #header {
+            width: 100%;
+            background: #09c332;
+            margin-top: 0px;
+            padding: 15px 0px 15px 15px;
+        }
+
+        #header h2 {
             width: 100%;
             margin: auto;
             color: #FFFFFF;
         }
 
+        #container {
+            width: 100%;
+            margin: auto
+        }
+
+        #container h3 {
+            color: #000;
+        }
+
+        #container #content {
+            margin-top: 20px;
+        }
+
+        .add-button {
+            border: 1px solid #666;
+            border-radius: 5px;
+            padding: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            width: 120px;
+            padding: 5px 10px;
+
+            margin-bottom: 15px;
+            background: #cccccc;
+        }
+
     </style>
-    <title></title>
+    <title>Movies</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -70,26 +106,28 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
-                <span style="font-size: 40px; padding-left: 20px;" class="navbar-brand">Movie project</span>
+                <span style="font-size: 40px" class="navbar-brand"><a style="font-size: 40px" class="btn btn-dark" href="/home">Home</a></span>
             </ul>
         </div>
     </div>
 </nav>
 
-<div id="content">
-    <div>
+<br>
+<div>
+</div>
 
-        <table >
+<div id="container">
+
+    <div id="content">
+        <table>
             <tr>
-                <th><a href="/movies" class="btn btn-sm btn-dark">
-                    <div style="font-size: 25px">Movies</div>
-                </a></th>
-                <th><a href="/actors" class="btn btn-sm btn-dark">
-                    <div style="font-size: 25px">Actors</div>
-                </a></th>
-
+                <th>Actor</th>
             </tr>
 
+
+            <tr th:each="actor : ${actors}">
+                <td> <a th:text="${actor.getName()}" th:href="@{'/actor/{name}' (name=${actor.getName()})}"></a></td>
+            </tr>
 
         </table>
 

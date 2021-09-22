@@ -1,5 +1,6 @@
 package com.vbs.demo.controller;
 
+import com.vbs.demo.model.Actor;
 import com.vbs.demo.model.Movie;
 import com.vbs.demo.service.MovieServiceImpl;
 import lombok.AllArgsConstructor;
@@ -18,8 +19,8 @@ public class MovieController {
     private final MovieServiceImpl movieService;
 
     @GetMapping("/movies")
-    public String getProductPage(Model model) {
-        List<Movie> moviesList = this.movieService.findAll();
+    public String listAllMovies(Model model) {
+        List<Movie> moviesList = this.movieService.findAllMovies();
         model.addAttribute("movies", moviesList);
         return "movies";
     }
@@ -27,11 +28,29 @@ public class MovieController {
     public String home(){
         return "home";
     }
+
     @GetMapping("/movie/{name}")
-    public String editProductPage(@PathVariable String name, Model model) {
-        Movie movie = this.movieService.getMovie(name);
+    public String getMovie(@PathVariable String name, Model model) {
+        Movie movie = this.movieService.getMovie(name).get();
         model.addAttribute("movie", movie);
         return "movie";
     }
+
+    @GetMapping("/actors")
+    public String listAllActors(Model model){
+        List<Actor> actorsList = this.movieService.findAllActors();
+        model.addAttribute("actors", actorsList);
+        return "actors";
+    }
+
+
+    @GetMapping("/actor/{name}")
+    public String getActor(@PathVariable String name, Model model){
+        Actor actor = this.movieService.getActor(name).get();
+        model.addAttribute("actor", actor);
+        model.addAttribute("actorMoviesList", actor.getActorsMovies());
+        return "actor";
+    }
+
 
 }
